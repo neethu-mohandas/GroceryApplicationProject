@@ -1,25 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-11T15:33:31 IST" name="Default suite" finished-at="2025-09-11T15:33:35 IST" duration-ms="3683">
+  <suite started-at="2025-09-16T15:10:45 IST" name="Default suite" finished-at="2025-09-16T15:11:01 IST" duration-ms="15737">
     <groups>
     </groups>
-    <test started-at="2025-09-11T15:33:31 IST" name="Default test" finished-at="2025-09-11T15:33:35 IST" duration-ms="3683">
-      <class name="testscripts.LoginTest">
-        <test-method is-config="true" signature="initialiseBrowser()[pri:0, instance:testscripts.LoginTest@4c12331b]" started-at="2025-09-11T15:33:31 IST" name="initialiseBrowser" finished-at="2025-09-11T15:33:34 IST" duration-ms="2585" status="PASS">
+    <test started-at="2025-09-16T15:10:45 IST" name="Default test" finished-at="2025-09-16T15:11:01 IST" duration-ms="15737">
+      <class name="testscripts.AdminUsersTest">
+        <test-method is-config="true" signature="initialiseBrowser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:45 IST" name="initialiseBrowser" finished-at="2025-09-16T15:10:47 IST" duration-ms="2254" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialiseBrowser -->
-        <test-method signature="verifyLoginWithInvalidCredentials()[pri:0, instance:testscripts.LoginTest@4c12331b]" started-at="2025-09-11T15:33:34 IST" name="verifyLoginWithInvalidCredentials" finished-at="2025-09-11T15:33:35 IST" duration-ms="1054" status="PASS">
+        <test-method signature="verifyUserAbleToAddNewUser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:47 IST" name="verifyUserAbleToAddNewUser" finished-at="2025-09-16T15:10:51 IST" duration-ms="3415" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLoginWithInvalidCredentials -->
-        <test-method is-config="true" signature="browserClose()[pri:0, instance:testscripts.LoginTest@4c12331b]" started-at="2025-09-11T15:33:35 IST" name="browserClose" finished-at="2025-09-11T15:33:35 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- verifyUserAbleToAddNewUser -->
+        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:51 IST" name="driverQuit" finished-at="2025-09-16T15:10:51 IST" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserAbleToAddNewUser status=SUCCESS method=AdminUsersTest.verifyUserAbleToAddNewUser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- browserClose -->
-      </class> <!-- testscripts.LoginTest -->
+        </test-method> <!-- driverQuit -->
+        <test-method is-config="true" signature="initialiseBrowser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:51 IST" name="initialiseBrowser" finished-at="2025-09-16T15:10:53 IST" duration-ms="1871" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialiseBrowser -->
+        <test-method signature="verifyUserAbleToResetUserList()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:53 IST" name="verifyUserAbleToResetUserList" finished-at="2025-09-16T15:10:54 IST" duration-ms="1579" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserAbleToResetUserList -->
+        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:54 IST" name="driverQuit" finished-at="2025-09-16T15:10:54 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserAbleToResetUserList status=SUCCESS method=AdminUsersTest.verifyUserAbleToResetUserList()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverQuit -->
+        <test-method is-config="true" signature="initialiseBrowser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:54 IST" name="initialiseBrowser" finished-at="2025-09-16T15:10:56 IST" duration-ms="2266" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialiseBrowser -->
+        <test-method signature="verifyUserAbleToSearchNewlyAddedUser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:10:56 IST" name="verifyUserAbleToSearchNewlyAddedUser" finished-at="2025-09-16T15:11:01 IST" duration-ms="4129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserAbleToSearchNewlyAddedUser -->
+        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testscripts.AdminUsersTest@5542c4ed]" started-at="2025-09-16T15:11:01 IST" name="driverQuit" finished-at="2025-09-16T15:11:01 IST" duration-ms="31" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserAbleToSearchNewlyAddedUser status=SUCCESS method=AdminUsersTest.verifyUserAbleToSearchNewlyAddedUser()[pri:0, instance:testscripts.AdminUsersTest@5542c4ed] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverQuit -->
+      </class> <!-- testscripts.AdminUsersTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
