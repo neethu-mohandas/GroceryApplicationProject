@@ -20,7 +20,7 @@ public class HomePage {
 	@FindBy(xpath="//a[@data-toggle='dropdown']") private WebElement admin;
 	@FindBy(xpath="(//a[@class='dropdown-item'])[2]") private WebElement logout;
 	@FindBy(xpath="(//a[@class='small-box-footer'])[1]") private WebElement adminusersmoreinfo;
-
+	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']") private WebElement managenewsmoreinfo;
 	
 	// Actions
 	public void clickOnAdmin() {
@@ -33,5 +33,9 @@ public class HomePage {
 	
 	public void clickOnAdminUsersMoreInfo() {
 		adminusersmoreinfo.click();
+	}
+	
+	public void clickOnManageNewsMoreInfo() {
+		managenewsmoreinfo.click();
 	}
 }

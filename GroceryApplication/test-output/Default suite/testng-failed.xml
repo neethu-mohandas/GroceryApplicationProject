@@ -6,9 +6,8 @@
       <class name="testscripts.AdminUsersTest">
         <methods>
           <include name="initialiseBrowser"/>
-          <include name="verifyUserAbleToSearchNewlyAddedUser"/>
           <include name="driverQuit"/>
-          <include name="verifyUserAbleToResetUserList"/>
+          <include name="verifyUserAbleToAddNewUser"/>
         </methods>
       </class> <!-- testscripts.AdminUsersTest -->
     </classes>

@@ -35,10 +35,17 @@
     <artifactId>poi-ooxml</artifactId>
     <version>5.3.0</version>
 </dependency>
+<!-- dependency for creating random data -->
 <dependency>
-			<groupId>com.github.javafaker</groupId>
-			<artifactId>javafaker</artifactId>
-			<version>0.15</version>
-		</dependency>
+	<groupId>com.github.javafaker</groupId>
+	<artifactId>javafaker</artifactId>
+	<version>0.15</version>
+</dependency>
+<!-- dependency for extent report generation -->
+<dependency>
+	<groupId>com.aventstack</groupId>
+	<artifactId>extentreports</artifactId>
+	<version>5.0.9</version>
+	</dependency>
 </dependencies>
 </project>

@@ -24,7 +24,7 @@ public class Base {
 			// driver= new EdgeDriver();	
 			driver.get("https://groceryapp.uniqassosiates.com/admin/login");
 			driver.manage().window().maximize();
-			//implicit Wait
+			//implicit wait
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		}
 		

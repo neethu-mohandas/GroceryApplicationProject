@@ -2,6 +2,7 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
@@ -22,6 +23,10 @@ public class HomeTest extends Base {
 		HomePage homePage=new HomePage(driver);
 		homePage.clickOnAdmin();
 		homePage.clickOnLogout();
+		
+		String actual =loginPage.getPageTitle();
+		String expected="7rmart supermarket";
+		Assert.assertEquals(actual, expected,"User not able to logout");
 	}
 	
 	@Test

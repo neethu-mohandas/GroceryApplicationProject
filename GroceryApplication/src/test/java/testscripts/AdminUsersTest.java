@@ -2,6 +2,7 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
@@ -36,6 +37,9 @@ public class AdminUsersTest extends Base{
 		adminusersPage.enterNewPassword(newPassword); //random password will be entered using faker class
 		adminusersPage.selectNewUserType();
 		adminusersPage.clickOnNewSave();
+		
+		String adminuserssuccessmessage=adminusersPage.adminUsersSaveSuccessMsgTexts();
+		Assert.assertTrue(adminuserssuccessmessage.contains("User Created Successfully"), "User not able to add new admin user");
 	}
 	
 	@Test
@@ -56,9 +60,12 @@ public class AdminUsersTest extends Base{
 		adminusersPage.enterSearchUsername(searchUsername);
 		adminusersPage.selectSearchUserType();
 		adminusersPage.clickOnSearchAdminUser();
+		
+		boolean userssearchtabledisplay = adminusersPage.isUserSearchTableDisplayed();
+		Assert.assertTrue(userssearchtabledisplay,"User couldnot search the admin users list");
 	}
 	
-
+	
 	@Test
 	public void verifyUserAbleToResetUserList() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
@@ -73,6 +80,9 @@ public class AdminUsersTest extends Base{
 		
 		AdminUsersPage adminusersPage=new AdminUsersPage(driver);
 		adminusersPage.clickOnReset();
+		
+		boolean adminuserstabledisplay = adminusersPage.isAdminusersTableDisplayed();
+		Assert.assertTrue(adminuserstabledisplay,"User couldnot reset the admin users list");
 	}
 	
 }

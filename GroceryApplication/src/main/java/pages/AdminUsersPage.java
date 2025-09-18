@@ -29,6 +29,11 @@ public class AdminUsersPage {
 	@FindBy(xpath="//button[@name='Search']") private WebElement searchadminuser;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-warning']") private WebElement resetbutton;
 	
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") private WebElement newadminusersuccessalerts;
+	@FindBy(xpath="//a[@class='page-link']") private WebElement usersearchresulttable;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']") private WebElement adminuserstable;
+	
+	
 	// Actions
 	public void clickOnNew() {
 		newbutton.click();
@@ -72,4 +77,18 @@ public class AdminUsersPage {
 		resetbutton.click();
 	}
 	
+	public String adminUsersSaveSuccessMsgTexts() {
+	    String userdialogtexts = newadminusersuccessalerts.getText();
+	    System.out.println(userdialogtexts);
+	    return userdialogtexts;
+	}
+
+	 public boolean isUserSearchTableDisplayed() {
+		 return usersearchresulttable.isDisplayed();
+	 }
+	 
+	 public boolean isAdminusersTableDisplayed() {
+		 return adminuserstable.isDisplayed();
+	 }
+	 
 }

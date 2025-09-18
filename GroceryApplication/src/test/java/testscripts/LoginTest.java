@@ -2,6 +2,7 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
@@ -18,6 +19,9 @@ public class LoginTest extends Base{
 		loginPage.enterUsernameOnUsernameField(usernameValue);
 		loginPage.enterPasswordOnPasswordField(passwordValue);
 		loginPage.clickOnLoginButton();
+		
+		boolean dashboarddisplay = loginPage.isDashboardDisplayed();
+		Assert.assertTrue(dashboarddisplay,"User couldnot login with valid credentials");
 	}
 	
 	@Test
@@ -29,6 +33,10 @@ public class LoginTest extends Base{
 			loginPage.enterUsernameOnUsernameField(usernameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickOnLoginButton();
+			
+			String actual =loginPage.getPageTitle();
+			String expected="7rmart supermarket";
+			Assert.assertEquals(actual, expected,"User able to login with invalid username");
 		}
 		
 		@Test
@@ -40,6 +48,10 @@ public class LoginTest extends Base{
 			loginPage.enterUsernameOnUsernameField(usernameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickOnLoginButton();
+			
+			String actual =loginPage.getPageTitle();
+			String expected="7rmart supermarket";
+			Assert.assertEquals(actual, expected,"User able to login with invalid password");
 		}
 		
 		@Test
@@ -51,6 +63,10 @@ public class LoginTest extends Base{
 			loginPage.enterUsernameOnUsernameField(usernameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickOnLoginButton();
+			
+			String actual =loginPage.getPageTitle();
+			String expected="7rmart supermarket";
+			Assert.assertEquals(actual, expected,"User able to login with invalid credentials");	
 		}
 		
 }
