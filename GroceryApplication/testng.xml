@@ -4,9 +4,15 @@
 <listeners>
 <listener class-name="reportGeneration.Listeners"></listener>
 </listeners>
+<parameter name="browsers" value="Firefox"></parameter>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="testscripts.HomeTest"/>
+      <class name="testscripts.HomeTest">
+      <methods>
+      <include name="verifyUserAbleToLogout"></include> 
+ <!-- <exclude name="verifyUserAbleToLogout"></exclude>  -->
+      </methods>
+      </class>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

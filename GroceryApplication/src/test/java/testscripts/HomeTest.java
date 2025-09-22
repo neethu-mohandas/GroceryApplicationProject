@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constant.Constants;
 import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -13,7 +14,7 @@ import utilities.ExcelUtility;
 public class HomeTest extends Base {
 
 	@Test
-	public void verifyLogout() throws IOException {
+	public void verifyUserAbleToLogout() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
@@ -26,7 +27,7 @@ public class HomeTest extends Base {
 		
 		String actual =loginPage.getPageTitle();
 		String expected="7rmart supermarket";
-		Assert.assertEquals(actual, expected,"User not able to logout");
+		Assert.assertEquals(actual, expected,Constants.LOGOUTERROR);
 	}
 	
 	@Test

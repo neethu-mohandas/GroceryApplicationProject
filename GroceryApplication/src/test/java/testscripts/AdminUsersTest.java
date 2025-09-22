@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constant.Constants;
 import pages.AdminUsersPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -39,7 +40,7 @@ public class AdminUsersTest extends Base{
 		adminusersPage.clickOnNewSave();
 		
 		String adminuserssuccessmessage=adminusersPage.adminUsersSaveSuccessMsgTexts();
-		Assert.assertTrue(adminuserssuccessmessage.contains("User Created Successfully"), "User not able to add new admin user");
+		Assert.assertTrue(adminuserssuccessmessage.contains("User Created Successfully"),Constants.ADDNEWADMINUSERERROR);
 	}
 	
 	@Test
@@ -62,7 +63,7 @@ public class AdminUsersTest extends Base{
 		adminusersPage.clickOnSearchAdminUser();
 		
 		boolean userssearchtabledisplay = adminusersPage.isUserSearchTableDisplayed();
-		Assert.assertTrue(userssearchtabledisplay,"User couldnot search the admin users list");
+		Assert.assertTrue(userssearchtabledisplay,Constants.SEARCHADMINUSERERROR);
 	}
 	
 	
@@ -82,7 +83,7 @@ public class AdminUsersTest extends Base{
 		adminusersPage.clickOnReset();
 		
 		boolean adminuserstabledisplay = adminusersPage.isAdminusersTableDisplayed();
-		Assert.assertTrue(adminuserstabledisplay,"User couldnot reset the admin users list");
+		Assert.assertTrue(adminuserstabledisplay,Constants.RESETADMINUSERERROR);
 	}
 	
 }

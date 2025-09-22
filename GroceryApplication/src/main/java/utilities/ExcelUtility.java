@@ -33,6 +33,5 @@ public class ExcelUtility {
 		return String.valueOf(val);   //convert int to String using valueOf() method
 		//return val; //return as integer
 }
-	
 
 }

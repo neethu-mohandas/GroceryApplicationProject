@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constant.Constants;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
@@ -32,7 +33,7 @@ public class ManageNewsTest extends Base{
 		managenewsPage.clickOnSaveNews();
 		
 		String newssuccessmessage=managenewsPage.newsSaveSuccessMsgTexts();
-		Assert.assertTrue(newssuccessmessage.contains("News Created Successfully"), "Entered news not saved");
+		Assert.assertTrue(newssuccessmessage.contains("News Created Successfully"),Constants.ADDNEWSERROR);
 }
 	
 	@Test
@@ -55,7 +56,7 @@ public class ManageNewsTest extends Base{
 		
 		String actual =managenewsPage.newsSearchResults();
 		String expected="Sample test news data";
-		Assert.assertEquals(actual, expected,"User not able to get correct search results");
+		Assert.assertEquals(actual, expected,Constants.SEARCHNEWSERROR);
 	}
 	
 	@Test
@@ -74,7 +75,7 @@ public class ManageNewsTest extends Base{
 		managenewsPage.clickOnNewsReset();
 		
 		boolean newstabledisplay = managenewsPage.isNewsTableDisplayed();
-		Assert.assertTrue(newstabledisplay,"User couldnot reset the news");	
+		Assert.assertTrue(newstabledisplay,Constants.RESETNEWSERROR);	
 	}
 		
 }

@@ -6,12 +6,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constant.Constants;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base{
 	
-	@Test
+	@Test(groups={"smoke"})
 	public void verifyLoginWithValidCredentials() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
@@ -21,7 +22,7 @@ public class LoginTest extends Base{
 		loginPage.clickOnLoginButton();
 		
 		boolean dashboarddisplay = loginPage.isDashboardDisplayed();
-		Assert.assertTrue(dashboarddisplay,"User couldnot login with valid credentials");
+		Assert.assertTrue(dashboarddisplay,Constants.VALIDCREDENTIALERROR);
 	}
 	
 	@Test
@@ -36,7 +37,7 @@ public class LoginTest extends Base{
 			
 			String actual =loginPage.getPageTitle();
 			String expected="7rmart supermarket";
-			Assert.assertEquals(actual, expected,"User able to login with invalid username");
+			Assert.assertEquals(actual, expected,Constants.INVALIDUSERNAMEERROR);
 		}
 		
 		@Test
@@ -51,10 +52,10 @@ public class LoginTest extends Base{
 			
 			String actual =loginPage.getPageTitle();
 			String expected="7rmart supermarket";
-			Assert.assertEquals(actual, expected,"User able to login with invalid password");
+			Assert.assertEquals(actual, expected,Constants.INVALIDPASSWORDERROR);
 		}
 		
-		@Test
+		@Test(groups={"smoke"})
 	   public void verifyLoginWithInvalidCredentials() throws IOException {
 			
 			String usernameValue= ExcelUtility.readStringData(3, 0, "LoginPage");
@@ -66,7 +67,7 @@ public class LoginTest extends Base{
 			
 			String actual =loginPage.getPageTitle();
 			String expected="7rmart supermarket";
-			Assert.assertEquals(actual, expected,"User able to login with invalid credentials");	
+			Assert.assertEquals(actual, expected,Constants.INVALIDCREDENTIALSERROR);	
 		}
 		
 }
