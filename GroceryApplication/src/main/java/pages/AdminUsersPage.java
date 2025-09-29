@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class AdminUsersPage {
 
-
 	public WebDriver driver;
 	
 	// Constructor
@@ -35,55 +34,66 @@ public class AdminUsersPage {
 	
 	
 	// Actions
-	public void clickOnNew() {
+	public AdminUsersPage clickOnNew() {
 		newbutton.click();
+		return this;
 	}
 	
-	public void enterNewUsername(String newUsername) {
+	public AdminUsersPage enterNewUsername(String newUsername) {
 		newusername.sendKeys(newUsername);
+		return this;
 	}
 	
-	public void enterNewPassword(String newPassword) {
+	public AdminUsersPage enterNewPassword(String newPassword) {
 		newpassword.sendKeys(newPassword);
+		return this;
 	}
 	
-	public void selectNewUserType() {
+	public AdminUsersPage selectNewUserType() {
 		Select select =new Select(newusertypedropdown);
 		select.selectByValue("staff");
+		return this;
 	}
 	
-	public void clickOnNewSave() {
+	public AdminUsersPage clickOnNewSave() {
 		savenewuser.click();
+		return this;
 	}
 	
-	public void clickOnSearch() {
+	public AdminUsersPage clickOnSearch() {
 		searchbutton.click();
+		return this;
 	}
 	
-	public void enterSearchUsername(String searchUsername) {
+	public AdminUsersPage enterSearchUsername(String searchUsername) {
 		searchusername.sendKeys(searchUsername);
+		return this;
 	}
 	
-	public void selectSearchUserType() {
+	public AdminUsersPage selectSearchUserType() {
 		Select select =new Select(searchusertypedropdown);
 		select.selectByValue("staff");
+		return this;
 	}
-	
-	public void clickOnSearchAdminUser() {
+
+	public AdminUsersPage clickOnSearchAdminUser() {
 		searchadminuser.click();
+		return this;
 	}
 	
-	public void clickOnReset() {
+	public AdminUsersPage clickOnReset() {
 		resetbutton.click();
+		return this;
 	}
 	
+	//methods for assertions
 	public String adminUsersSaveSuccessMsgTexts() {
 	    String userdialogtexts = newadminusersuccessalerts.getText();
 	    System.out.println(userdialogtexts);
 	    return userdialogtexts;
 	}
-
-	 public boolean isUserSearchTableDisplayed() {
+	
+	public boolean isUserSearchTableDisplayed() {
 		 return usersearchresulttable.isDisplayed();
 	 }
 	 

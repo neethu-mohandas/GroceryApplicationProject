@@ -14,67 +14,65 @@ import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base{
 	
-	@Test
+	HomePage homepage;
+	ManageNewsPage managenewspage;
+	
+	@Test(description="Verify that user can add news")
 	public void verifyUserAbleToAddNews() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(usernameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickOnLoginButton();
 		
-		HomePage homePage=new HomePage(driver);
-		homePage.clickOnManageNewsMoreInfo();
+		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		
+		homepage = loginPage.clickOnLoginButton();
+		
+		managenewspage = homepage.clickOnManageNewsMoreInfo();
 
 		String newsTitle=ExcelUtility.readStringData(0, 0, "ManageNewsPage");
-		ManageNewsPage managenewsPage=new ManageNewsPage(driver);
-		managenewsPage.clickOnNewNewsButton();
-		managenewsPage.enterNewsOnTextarea(newsTitle);
-		managenewsPage.clickOnSaveNews();
 		
-		String newssuccessmessage=managenewsPage.newsSaveSuccessMsgTexts();
+		managenewspage.clickOnNewNewsButton().enterNewsOnTextarea(newsTitle).clickOnSaveNews();
+		
+		String newssuccessmessage=managenewspage.newsSaveSuccessMsgTexts();
 		Assert.assertTrue(newssuccessmessage.contains("News Created Successfully"),Constants.ADDNEWSERROR);
-}
+     }
 	
-	@Test
+	@Test(description="Verify that user can search for news")
 	public void verifyUserAbleToSearchNews() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(usernameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickOnLoginButton();
 		
-		HomePage homePage=new HomePage(driver);
-		homePage.clickOnManageNewsMoreInfo();
+		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		
+		homepage = loginPage.clickOnLoginButton();
+		
+		managenewspage = homepage.clickOnManageNewsMoreInfo();
 
 		String newsTitle=ExcelUtility.readStringData(0, 0, "ManageNewsPage");
-		ManageNewsPage managenewsPage=new ManageNewsPage(driver);
-		managenewsPage.clickOnNewsSearch();
-		managenewsPage.enterNewsTitleForSearch(newsTitle);
-		managenewsPage.clickOnNewsSearchSubmit();
 		
-		String actual =managenewsPage.newsSearchResults();
+		managenewspage.clickOnNewsSearch().enterNewsTitleForSearch(newsTitle).clickOnNewsSearchSubmit();
+		
+		String actual =managenewspage.newsSearchResults();
 		String expected="Sample test news data";
 		Assert.assertEquals(actual, expected,Constants.SEARCHNEWSERROR);
 	}
 	
-	@Test
+	@Test(description="Verify that user can refresh the news list")
 	public void verifyUserAbleToResetNews() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(usernameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickOnLoginButton();
 		
-		HomePage homePage=new HomePage(driver);
-		homePage.clickOnManageNewsMoreInfo();
+		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		
+		homepage = loginPage.clickOnLoginButton();
+		
+		managenewspage = homepage.clickOnManageNewsMoreInfo();
 
-		ManageNewsPage managenewsPage=new ManageNewsPage(driver);
-		managenewsPage.clickOnNewsReset();
+		managenewspage.clickOnNewsReset();
 		
-		boolean newstabledisplay = managenewsPage.isNewsTableDisplayed();
+		boolean newstabledisplay = managenewspage.isNewsTableDisplayed();
 		Assert.assertTrue(newstabledisplay,Constants.RESETNEWSERROR);	
 	}
 		

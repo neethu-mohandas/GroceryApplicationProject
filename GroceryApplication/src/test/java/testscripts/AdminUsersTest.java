@@ -14,75 +14,70 @@ import utilities.ExcelUtility;
 import utilities.RandomDataUtility;
 
 public class AdminUsersTest extends Base{
+	
+	HomePage homepage;
+	AdminUsersPage adminuserspage;
 
-	@Test
+	@Test(description="Verify that user can add a new admin user")
 	public void verifyUserAbleToAddNewUser() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(usernameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickOnLoginButton();
 		
-		HomePage homePage=new HomePage(driver);
-		homePage.clickOnAdminUsersMoreInfo();
+		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
 		
-		AdminUsersPage adminusersPage=new AdminUsersPage(driver);
+		homepage = loginPage.clickOnLoginButton();
+		
+		adminuserspage = homepage.clickOnAdminUsersMoreInfo();
+		
 		RandomDataUtility randomdata = new RandomDataUtility();
-		adminusersPage.clickOnNew();
+		adminuserspage.clickOnNew();
 		
 		String newUsername= randomdata.randomUsername();
 		String newPassword= randomdata.randomPassword();
 		
-		adminusersPage.enterNewUsername(newUsername); //random username will be entered using faker class
-		adminusersPage.enterNewPassword(newPassword); //random password will be entered using faker class
-		adminusersPage.selectNewUserType();
-		adminusersPage.clickOnNewSave();
+		//random username and random password will be entered using faker class
+		adminuserspage.enterNewUsername(newUsername).enterNewPassword(newPassword).selectNewUserType().clickOnNewSave();
 		
-		String adminuserssuccessmessage=adminusersPage.adminUsersSaveSuccessMsgTexts();
+		String adminuserssuccessmessage=adminuserspage.adminUsersSaveSuccessMsgTexts();
 		Assert.assertTrue(adminuserssuccessmessage.contains("User Created Successfully"),Constants.ADDNEWADMINUSERERROR);
 	}
 	
-	@Test
+	@Test(description="Verify that user can search an admin user")
 	public void verifyUserAbleToSearchNewlyAddedUser() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(usernameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickOnLoginButton();
 		
-		HomePage homePage=new HomePage(driver);
-		homePage.clickOnAdminUsersMoreInfo();
+		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		
+		homepage = loginPage.clickOnLoginButton();
+		
+		adminuserspage = homepage.clickOnAdminUsersMoreInfo();
 		
 		String searchUsername=ExcelUtility.readStringData(0, 0, "AdminUsersPage");
-		AdminUsersPage adminusersPage=new AdminUsersPage(driver);
-		adminusersPage.clickOnSearch();
-		adminusersPage.enterSearchUsername(searchUsername);
-		adminusersPage.selectSearchUserType();
-		adminusersPage.clickOnSearchAdminUser();
 		
-		boolean userssearchtabledisplay = adminusersPage.isUserSearchTableDisplayed();
+		adminuserspage.clickOnSearch().enterSearchUsername(searchUsername).selectSearchUserType().clickOnSearchAdminUser();
+		
+		boolean userssearchtabledisplay = adminuserspage.isUserSearchTableDisplayed();
 		Assert.assertTrue(userssearchtabledisplay,Constants.SEARCHADMINUSERERROR);
 	}
 	
-	
-	@Test
+	@Test(description="Verify that user can refresh the admin users list")
 	public void verifyUserAbleToResetUserList() throws IOException {
 		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(usernameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickOnLoginButton();
 		
-		HomePage homePage=new HomePage(driver);
-		homePage.clickOnAdminUsersMoreInfo();
+		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
 		
-		AdminUsersPage adminusersPage=new AdminUsersPage(driver);
-		adminusersPage.clickOnReset();
+		homepage = loginPage.clickOnLoginButton();
+			
+		adminuserspage = homepage.clickOnAdminUsersMoreInfo();
 		
-		boolean adminuserstabledisplay = adminusersPage.isAdminusersTableDisplayed();
+		adminuserspage.clickOnReset();
+		
+		boolean adminuserstabledisplay = adminuserspage.isAdminusersTableDisplayed();
 		Assert.assertTrue(adminuserstabledisplay,Constants.RESETADMINUSERERROR);
 	}
 	

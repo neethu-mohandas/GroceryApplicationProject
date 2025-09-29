@@ -6,7 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ManageNewsPage {
-public WebDriver driver;
+	
+     public WebDriver driver;
 	
 	// Constructor
 	public ManageNewsPage(WebDriver driver){
@@ -15,7 +16,6 @@ public WebDriver driver;
 		}
 	
 	 // Locators
-	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/news/add']") private WebElement newnewsbutton;
 	@FindBy(id="news") private WebElement enternewstextarea;
 	@FindBy(xpath="//button[@name='create']") private WebElement savenews;
@@ -31,51 +31,61 @@ public WebDriver driver;
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']") private WebElement newstable;
 
 	// Actions
-		public void clickOnNewNewsButton() {
+		public ManageNewsPage clickOnNewNewsButton() {
 			newnewsbutton.click();
+			return this;
 		}
 
-		public void enterNewsOnTextarea(String newsTitle) {
+		public ManageNewsPage enterNewsOnTextarea(String newsTitle) {
 			enternewstextarea.sendKeys(newsTitle);
+			return this;
+		}
+	
+		public ManageNewsPage clickOnSaveNews() {
+			savenews.click();
+			return this;
 		}
 		
-		public void clickOnSaveNews() {
-			savenews.click();
+		public ManageNewsPage clickOnNewsSearch() {
+			searchnewsbutton.click();
+			return this;
 		}
+		
+		public ManageNewsPage enterNewsTitleForSearch(String newsTitle) {
+			searchnewstitle.sendKeys(newsTitle);
+			return this;
+		}
+		
+		public ManageNewsPage clickOnNewsSearchSubmit() {
+			newssearchsubmit.click();
+			return this;
+		}
+		
+		public ManageNewsPage clickOnNewsReset() {
+			resetnewsbutton.click();
+			return this;
+		}
+		
+	// methods for assertion
 		/*
 		public boolean successNewsDisplayed() {
 				 return addnewssuccess.isDisplayed();
 			 }
 		*/
-		public String newsSaveSuccessMsgTexts() {
-		    String dialogtexts = newssuccessalerts.getText();
-		    System.out.println(dialogtexts);
-		    return dialogtexts;
-		}
+		 public String newsSaveSuccessMsgTexts() {
+			    String dialogtexts = newssuccessalerts.getText();
+			    System.out.println(dialogtexts);
+			    return dialogtexts;
+			}
+		 
+		 public String newsSearchResults() {
+			    String searchresultstexts = newssearchresulttable.getText();
+			    System.out.println(searchresultstexts);
+			    return searchresultstexts;
+			}
 
-		public void clickOnNewsSearch() {
-			searchnewsbutton.click();
-		}
-		
-		public void enterNewsTitleForSearch(String newsTitle) {
-			searchnewstitle.sendKeys(newsTitle);
-		}
-		public void clickOnNewsSearchSubmit() {
-			newssearchsubmit.click();
-		}
-		
-		public String newsSearchResults() {
-		    String searchresultstexts = newssearchresulttable.getText();
-		    System.out.println(searchresultstexts);
-		    return searchresultstexts;
-		}
-		
-		public void clickOnNewsReset() {
-			resetnewsbutton.click();
-		}
 		 public boolean isNewsTableDisplayed() {
 			 return newstable.isDisplayed();
 		 }
-		 
 		
 }

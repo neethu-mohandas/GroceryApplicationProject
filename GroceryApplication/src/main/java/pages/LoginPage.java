@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-
 	public WebDriver driver;
 	
 	// Constructor
@@ -24,16 +23,19 @@ public class LoginPage {
 	@FindBy(xpath="//b[text()='7rmart supermarket']") private WebElement loginpagetitle;
 	
 	// Actions
-	public void enterUsernameOnUsernameField(String usernameValue) {
+	public LoginPage enterUsernameOnUsernameField(String usernameValue) {
 		username.sendKeys(usernameValue);
+		return this;
 	}
 	
-    public void enterPasswordOnPasswordField(String passwordValue) {	
+    public LoginPage enterPasswordOnPasswordField(String passwordValue) {	
 	password.sendKeys(passwordValue);
+	return this;
 	}
 	
-	 public void clickOnLoginButton() {
+	 public HomePage clickOnLoginButton() {
 		login.click();
+		return new HomePage(driver);
 	}
 	 
 	 public boolean isDashboardDisplayed() {

@@ -17,4 +17,8 @@ public class Constants {
 	public static final String SEARCHNEWSERROR = "User not able to get correct news search results";
 	public static final String RESETNEWSERROR = "User couldnot reset the news";
 	
+	public static final String EXCELPATH = System.getProperty("user.dir")+ "\\src\\test\\resources\\Testdata.xlsx";
+	
+	public static final String CONFIGPATH = System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties";
+
 }

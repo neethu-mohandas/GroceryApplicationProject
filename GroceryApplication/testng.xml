@@ -4,14 +4,23 @@
 <listeners>
 <listener class-name="reportGeneration.Listeners"></listener>
 </listeners>
-<parameter name="browsers" value="Firefox"></parameter>
+<parameter name="browsers" value="Chrome"></parameter>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="testscripts.HomeTest">
+      <class name="testscripts.LoginTest">
+      
       <methods>
-      <include name="verifyUserAbleToLogout"></include> 
- <!-- <exclude name="verifyUserAbleToLogout"></exclude>  -->
+     <include name="verifyLoginWithValidCredentials"></include> 
       </methods>
+     
+  <!-- Commenting out to verify the order of execution of all methods in LoginTest -->
+      <!--
+     <methods>
+     <include name="verifyLoginWithValidCredentials"></include> 
+     <exclude name="verifyLoginWithInvalidUsernameAndValidPassword"></exclude>  
+      </methods>
+       -->
+      
       </class>
     </classes>
   </test> <!-- Test -->

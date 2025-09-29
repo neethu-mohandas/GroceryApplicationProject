@@ -1,7 +1,9 @@
 package automationcore;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,16 +14,24 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import constant.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utilities.ScreenshotUtility;
 
 public class Base {
 
+	Properties prop;
+	FileInputStream fs;
+	
 	public WebDriver driver;
 	
 	@Parameters("browsers")
 	@BeforeMethod(alwaysRun=true)
 		public void initialiseBrowser(String browsers) throws Exception {
+		
+		prop = new Properties();
+		fs = new FileInputStream(Constants.CONFIGPATH);
+		prop.load(fs);
 		
 		if(browsers.equalsIgnoreCase("Chrome")) {
 			driver= new ChromeDriver();
@@ -37,7 +47,8 @@ public class Base {
 			throw new Exception("Invalid browser");
 		}
 		    // WebDriverManager.edgedriver().setup();
-			driver.get("https://groceryapp.uniqassosiates.com/admin/login");
+			driver.get(prop.getProperty("url"));
+			
 			driver.manage().window().maximize();
 			//implicit wait
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));

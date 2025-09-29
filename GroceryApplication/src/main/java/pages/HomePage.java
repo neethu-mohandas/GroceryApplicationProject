@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 
-
 	public WebDriver driver;
 	
 	// Constructor
@@ -23,19 +22,24 @@ public class HomePage {
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']") private WebElement managenewsmoreinfo;
 	
 	// Actions
-	public void clickOnAdmin() {
+	public HomePage clickOnAdmin() {
 		admin.click();
+		return this;
 	}
 	
-	public void clickOnLogout() {
+	public LoginPage clickOnLogout() {
 		logout.click();
+		return new LoginPage(driver);
 	}
 	
-	public void clickOnAdminUsersMoreInfo() {
+	public AdminUsersPage clickOnAdminUsersMoreInfo() {
 		adminusersmoreinfo.click();
+		return new AdminUsersPage(driver);
 	}
 	
-	public void clickOnManageNewsMoreInfo() {
+	public ManageNewsPage clickOnManageNewsMoreInfo() {
 		managenewsmoreinfo.click();
+		return new ManageNewsPage(driver);
 	}
+	
 }
