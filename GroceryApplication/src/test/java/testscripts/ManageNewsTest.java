@@ -12,68 +12,68 @@ import pages.LoginPage;
 import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
-public class ManageNewsTest extends Base{
-	
+public class ManageNewsTest extends Base {
+
 	HomePage homepage;
 	ManageNewsPage managenewspage;
-	
-	@Test(description="Verify that user can add news")
+
+	@Test(description = "Verify that user can add news")
 	public void verifyUserAbleToAddNews() throws IOException {
-		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
-		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
-		LoginPage loginPage=new LoginPage(driver);
-		
+		String usernameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
+		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
+		LoginPage loginPage = new LoginPage(driver);
+
 		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
-		
+
 		homepage = loginPage.clickOnLoginButton();
-		
+
 		managenewspage = homepage.clickOnManageNewsMoreInfo();
 
-		String newsTitle=ExcelUtility.readStringData(0, 0, "ManageNewsPage");
-		
+		String newsTitle = ExcelUtility.readStringData(0, 0, "ManageNewsPage");
+
 		managenewspage.clickOnNewNewsButton().enterNewsOnTextarea(newsTitle).clickOnSaveNews();
-		
-		String newssuccessmessage=managenewspage.newsSaveSuccessMsgTexts();
-		Assert.assertTrue(newssuccessmessage.contains("News Created Successfully"),Constants.ADDNEWSERROR);
-     }
-	
-	@Test(description="Verify that user can search for news")
+
+		String newssuccessmessage = managenewspage.newsSaveSuccessMsgTexts();
+		Assert.assertTrue(newssuccessmessage.contains("News Created Successfully"), Constants.ADDNEWSERROR);
+	}
+
+	@Test(description = "Verify that user can search for news")
 	public void verifyUserAbleToSearchNews() throws IOException {
-		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
-		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
-		LoginPage loginPage=new LoginPage(driver);
-		
+		String usernameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
+		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
+		LoginPage loginPage = new LoginPage(driver);
+
 		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
-		
+
 		homepage = loginPage.clickOnLoginButton();
-		
+
 		managenewspage = homepage.clickOnManageNewsMoreInfo();
 
-		String newsTitle=ExcelUtility.readStringData(0, 0, "ManageNewsPage");
-		
+		String newsTitle = ExcelUtility.readStringData(0, 0, "ManageNewsPage");
+
 		managenewspage.clickOnNewsSearch().enterNewsTitleForSearch(newsTitle).clickOnNewsSearchSubmit();
-		
-		String actual =managenewspage.newsSearchResults();
-		String expected="Sample test news data";
-		Assert.assertEquals(actual, expected,Constants.SEARCHNEWSERROR);
+
+		String actual = managenewspage.newsSearchResults();
+		String expected = "Sample test news data";
+		Assert.assertEquals(actual, expected, Constants.SEARCHNEWSERROR);
 	}
-	
-	@Test(description="Verify that user can refresh the news list")
+
+	@Test(description = "Verify that user can refresh the news list")
 	public void verifyUserAbleToResetNews() throws IOException {
-		String usernameValue= ExcelUtility.readStringData(0, 0, "LoginPage");
-		String passwordValue=ExcelUtility.readStringData(0, 1, "LoginPage");
-		LoginPage loginPage=new LoginPage(driver);
-		
+		String usernameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
+		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
+		LoginPage loginPage = new LoginPage(driver);
+
 		loginPage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
-		
+
 		homepage = loginPage.clickOnLoginButton();
-		
+
 		managenewspage = homepage.clickOnManageNewsMoreInfo();
 
 		managenewspage.clickOnNewsReset();
-		
+
 		boolean newstabledisplay = managenewspage.isNewsTableDisplayed();
-		Assert.assertTrue(newstabledisplay,Constants.RESETNEWSERROR);	
+		Assert.assertTrue(newstabledisplay, Constants.RESETNEWSERROR);
 	}
-		
+
 }

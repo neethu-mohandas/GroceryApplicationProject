@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import constant.Constants;
 
 public class ExcelUtility {
-	
+
 	static FileInputStream f;
 	static XSSFWorkbook w;
 	static XSSFSheet sh;
@@ -31,9 +31,9 @@ public class ExcelUtility {
 		sh = w.getSheet(sheet);
 		XSSFRow r = sh.getRow(row);
 		XSSFCell c = r.getCell(col);
-		int val =   (int) c.getNumericCellValue();  //convert double to int using typecasting
-		return String.valueOf(val);   //convert int to String using valueOf() method
-		//return val; //return as integer
-}
+		int val = (int) c.getNumericCellValue(); // convert double to int using typecasting
+		return String.valueOf(val); // convert int to String using valueOf() method
+		// return val; //return as integer
+	}
 
 }

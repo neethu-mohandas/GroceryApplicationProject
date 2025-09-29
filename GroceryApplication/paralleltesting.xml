@@ -3,27 +3,31 @@
 
 <suite name="ParallelTesting" parallel="methods">
 
-<parameter name="browsers" value="Firefox"></parameter>
+	<parameter name="browsers" value="Firefox"></parameter>
 
-  <test thread-count="5" name="Test1">
-    <classes>
-      <class name="testscripts.LoginTest">
-      <methods>
-      <include name="verifyLoginWithValidCredentials"></include>
-      </methods>
-      </class>
-    </classes>
-  </test> <!-- Test -->
-  
-   <test thread-count="5" name="Test2">
-    <classes> 
-      <class name="testscripts.LoginTest">
-       <methods>
-       <include name="verifyLoginWithInvalidUsernameAndValidPassword"></include>
-       </methods>
-      </class>
-    </classes>
-  </test> <!-- Test -->
-  
-</suite> <!-- Suite -->
+	<test thread-count="5" name="Test1">
+		<classes>
+			<class name="testscripts.LoginTest">
+				<methods>
+					<include name="verifyLoginWithValidCredentials"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+	<test thread-count="5" name="Test2">
+		<classes>
+			<class name="testscripts.LoginTest">
+				<methods>
+					<include
+						name="verifyLoginWithInvalidUsernameAndValidPassword"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+</suite> <!--
+Suite -->
 

@@ -11,90 +11,90 @@ import com.aventstack.extentreports.Status;
 
 import utilities.ExtentReportUtility;
 
-public class Listeners implements ITestListener{
-	
-	 ExtentTest test;
-	 ExtentReports extent = ExtentReportUtility.createExtentReports();
-	 ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+public class Listeners implements ITestListener {
 
-	 public void onTestStart(ITestResult result) {
+	ExtentTest test;
+	ExtentReports extent = ExtentReportUtility.createExtentReports();
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
-	 ITestListener.super.onTestStart(result);
-	 test = extent.createTest(result.getMethod().getMethodName());
-	 extentTest.set(test);
+	public void onTestStart(ITestResult result) {
 
-	 }
+		ITestListener.super.onTestStart(result);
+		test = extent.createTest(result.getMethod().getMethodName());
+		extentTest.set(test);
 
-	 public void onTestSuccess(ITestResult result) {
+	}
 
-	 ITestListener.super.onTestSuccess(result);
-	 extentTest.get().log(Status.PASS, "Test Passed");
+	public void onTestSuccess(ITestResult result) {
 
-	 }
+		ITestListener.super.onTestSuccess(result);
+		extentTest.get().log(Status.PASS, "Test Passed");
 
-	 public void onTestFailure(ITestResult result) {
+	}
 
-	 ITestListener.super.onTestFailure(result);
+	public void onTestFailure(ITestResult result) {
 
-	 extentTest.get().log(Status.FAIL, "Test Failed");
-	 extentTest.get().fail(result.getThrowable());
+		ITestListener.super.onTestFailure(result);
 
-	 WebDriver driver = null;
+		extentTest.get().log(Status.FAIL, "Test Failed");
+		extentTest.get().fail(result.getThrowable());
 
-	 String testMethodName = result.getMethod().getMethodName();
+		WebDriver driver = null;
 
-	 try {
+		String testMethodName = result.getMethod().getMethodName();
 
-	 driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
-	 .get(result.getInstance());
-	 } catch (IllegalArgumentException e) {
+		try {
 
-	 e.printStackTrace();
-	 } catch (IllegalAccessException e) {
+			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
+					.get(result.getInstance());
+		} catch (IllegalArgumentException e) {
 
-	 e.printStackTrace();
-	 } catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 
-	 e.printStackTrace();
-	 } catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
 
-	 e.printStackTrace();
-	 }
+			e.printStackTrace();
+		} catch (SecurityException e) {
 
-	 try {
-	 driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
-	 .get(result.getInstance());
-	 } catch (Exception e) {
-	 }
-	 }
+			e.printStackTrace();
+		}
 
-	 public void onTestSkipped(ITestResult result) {
+		try {
+			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
+					.get(result.getInstance());
+		} catch (Exception e) {
+		}
+	}
 
-	 ITestListener.super.onTestSkipped(result);
-	 extentTest.get().log(Status.SKIP, "Test Skipped");
-	 String testMethodName = result.getMethod().getMethodName();
+	public void onTestSkipped(ITestResult result) {
 
-	 }
+		ITestListener.super.onTestSkipped(result);
+		extentTest.get().log(Status.SKIP, "Test Skipped");
+		String testMethodName = result.getMethod().getMethodName();
 
-	 public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+	}
 
-	 ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
-	 }
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 
-	 public void onTestFailedWithTimeout(ITestResult result) {
+		ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
+	}
 
-	 ITestListener.super.onTestFailedWithTimeout(result);
-	 }
+	public void onTestFailedWithTimeout(ITestResult result) {
 
-	 public void onStart(ITestContext context) {
+		ITestListener.super.onTestFailedWithTimeout(result);
+	}
 
-	 ITestListener.super.onStart(context);
-	 }
+	public void onStart(ITestContext context) {
 
-	 public void onFinish(ITestContext context) {
+		ITestListener.super.onStart(context);
+	}
 
-	 ITestListener.super.onFinish(context);
-	 extent.flush();
-	 }
+	public void onFinish(ITestContext context) {
+
+		ITestListener.super.onFinish(context);
+		extent.flush();
+	}
 
 }

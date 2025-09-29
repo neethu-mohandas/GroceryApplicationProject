@@ -3,37 +3,41 @@
 
 <suite name="MultiBrowserTesting" parallel="methods">
 
-<test thread-count="5" name="ChromeTest">
-  <parameter name="browsers" value="Chrome"></parameter>
-    <classes>
-      <class name="testscripts.HomeTest">
-      <methods>
-      <include name="verifyUserAbleToLogout"></include> 
-      </methods>
-      </class>
-    </classes>
-  </test> <!-- Test -->
-  
-  <test thread-count="5" name="EdgeTest">
-  <parameter name="browsers" value="Edge"></parameter>
-    <classes>
-      <class name="testscripts.HomeTest">
-      <methods>
-      <include name="verifyUserAbleToLogout"></include> 
-      </methods>
-      </class>
-    </classes>
-  </test> <!-- Test -->
-  
-  <test thread-count="5" name="FirefoxTest">
-  <parameter name="browsers" value="Firefox"></parameter>
-    <classes>
-      <class name="testscripts.HomeTest">
-      <methods>
-      <include name="verifyUserAbleToLogout"></include>
-      </methods>
-      </class>
-    </classes>
-  </test> <!-- Test -->
-  
-</suite> <!-- Suite -->
+	<test thread-count="5" name="ChromeTest">
+		<parameter name="browsers" value="Chrome"></parameter>
+		<classes>
+			<class name="testscripts.HomeTest">
+				<methods>
+					<include name="verifyUserAbleToLogout"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+	<test thread-count="5" name="EdgeTest">
+		<parameter name="browsers" value="Edge"></parameter>
+		<classes>
+			<class name="testscripts.HomeTest">
+				<methods>
+					<include name="verifyUserAbleToLogout"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+	<test thread-count="5" name="FirefoxTest">
+		<parameter name="browsers" value="Firefox"></parameter>
+		<classes>
+			<class name="testscripts.HomeTest">
+				<methods>
+					<include name="verifyUserAbleToLogout"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+</suite> <!--
+Suite -->
